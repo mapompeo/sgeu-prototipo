@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>SGEU — Protótipo</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #1d2433; background: #f3f5f9; }
+  .tela { display: none; width: 900px; min-height: 600px; }
+  .tela:target { display: block; }
+  header { background: #0b4a8b; color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+  header b { font-size: 18px; }
+  header span { font-size: 13px; opacity: .9; }
+  main { padding: 20px 24px; }
+  h1 { font-size: 20px; margin: 0 0 14px; }
+  .filtros { display: flex; gap: 10px; margin-bottom: 16px; }
+  .filtros div { background: #fff; border: 1px solid #b8c0cc; border-radius: 6px; padding: 8px 12px; flex: 1; color: #4a5568; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card { background: #fff; border: 1px solid #d5dbe4; border-radius: 8px; padding: 14px; }
+  .card h2 { font-size: 15px; margin: 0 0 6px; }
+  .tag { display: inline-block; font-size: 11px; background: #e3edf8; color: #0b4a8b; border-radius: 10px; padding: 2px 8px; margin-bottom: 8px; }
+  .meta { color: #4a5568; font-size: 13px; line-height: 1.5; }
+  .vagas { font-weight: bold; margin-top: 6px; }
+  .esgotado { color: #a12a2a; }
+  .btn { display: inline-block; background: #0b4a8b; color: #fff; border-radius: 6px; padding: 9px 16px; font-weight: bold; margin-top: 10px; }
+  .btn.sec { background: #fff; color: #0b4a8b; border: 1px solid #0b4a8b; }
+  .btn.alerta { background: #fff; color: #a12a2a; border: 1px solid #a12a2a; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { border-bottom: 1px solid #d5dbe4; padding: 9px 10px; text-align: left; }
+  th { background: #e9edf3; font-size: 13px; }
+  .check { display: inline-block; width: 18px; height: 18px; border: 2px solid #0b4a8b; border-radius: 3px; vertical-align: middle; text-align: center; line-height: 14px; color: #0b4a8b; font-weight: bold; }
+  .resumo { display: flex; gap: 12px; margin-top: 14px; }
+  .resumo div { flex: 1; background: #fff; border: 1px solid #d5dbe4; border-radius: 8px; padding: 10px; text-align: center; }
+  .resumo b { display: block; font-size: 22px; }
+  .detalhe { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+  .aviso { background: #fff8e1; border: 1px solid #e0c060; border-radius: 6px; padding: 10px; font-size: 13px; margin-top: 12px; }
+  .nav { width: 900px; background: #1d2433; color: #fff; padding: 10px 24px; font-size: 13px; }
+  .nav a { color: #9cc7ff; margin-left: 14px; }
+  .nav a:focus { outline: 2px solid #fff; }
+</style>
+</head>
+<body>
+<nav class="nav">Protótipo SGEU (Engenharia de Software I, Univali):
+<a href="#t1">Tela 1: Eventos</a><a href="#t2">Tela 2: Inscrição</a><a href="#t3">Tela 3: Presença</a><a href="#t4">Tela 4: Certificados</a></nav>
+<script>if (!location.hash) location.hash = '#t1';</script>
+
+<!-- Tela 1 -->
+<section class="tela" id="t1">
+  <header><b>SGEU — Eventos Univali</b><span>Participante: Matheus · Meus certificados · Sair</span></header>
+  <main>
+    <h1>Eventos disponíveis</h1>
+    <div class="filtros"><div>Data: próximos 30 dias ▾</div><div>Tipo: todos ▾</div><div>Curso: Ciência da Computação ▾</div></div>
+    <div class="grid">
+      <div class="card"><span class="tag">Palestra</span> <span class="tag">Aberto à comunidade</span><h2>Carreira em Engenharia de Software</h2><div class="meta">14/10/2026 · 19h00 · Auditório Bloco 6<br>Carga horária: 2h</div><div class="vagas">32 vagas restantes</div><span class="btn">Ver detalhes</span></div>
+      <div class="card"><span class="tag">Minicurso</span><h2>Introdução ao Git e GitHub</h2><div class="meta">16/10/2026 · 19h00 · Laboratório 3<br>Carga horária: 4h</div><div class="vagas esgotado">Vagas esgotadas</div><span class="btn sec">Ver detalhes</span></div>
+      <div class="card"><span class="tag">Workshop</span> <span class="tag">Aberto à comunidade</span><h2>Acessibilidade na Web</h2><div class="meta">21/10/2026 · 19h00 · Sala 204<br>Carga horária: 3h</div><div class="vagas">12 vagas restantes</div><span class="btn">Ver detalhes</span></div>
+      <div class="card"><span class="tag">Semana acadêmica</span><h2>SACC 2026: Semana da Computação</h2><div class="meta">27 a 29/10/2026 · 19h00 · Bloco 6<br>Carga horária: 12h</div><div class="vagas">140 vagas restantes</div><span class="btn">Ver detalhes</span></div>
+    </div>
+  </main>
+</section>
+
+<!-- Tela 2 -->
+<section class="tela" id="t2">
+  <header><b>SGEU — Eventos Univali</b><span>Participante: Matheus · Meus certificados · Sair</span></header>
+  <main>
+    <div class="meta">Eventos disponíveis › Detalhe</div>
+    <div class="detalhe">
+      <div class="card">
+        <span class="tag">Minicurso</span>
+        <h1>Introdução ao Git e GitHub</h1>
+        <div class="meta">Data: 16/10/2026, 19h00 às 23h00<br>Local: Laboratório 3, Bloco 6<br>Carga horária: 4h<br>Organizador: Prof. responsável pelo minicurso</div>
+        <p>Minicurso prático sobre versionamento de código: commits, branches, pull requests e trabalho em equipe no GitHub.</p>
+      </div>
+      <div class="card">
+        <div class="vagas esgotado">Vagas esgotadas (30 de 30)</div>
+        <div class="meta">Inscrições até 15/10/2026, 19h00</div>
+        <span class="btn">Entrar na lista de espera</span>
+        <div class="aviso">Você será avisado por e-mail se uma vaga for liberada. Hoje há 4 pessoas na lista.</div>
+        <hr>
+        <div class="meta">Se você já estiver inscrito, pode cancelar até 24h antes do início.</div>
+        <span class="btn alerta">Cancelar inscrição</span>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- Tela 3 -->
+<section class="tela" id="t3">
+  <header><b>SGEU — Área do organizador</b><span>Organizador · Meus eventos · Sair</span></header>
+  <main>
+    <h1>Registro de presença: Acessibilidade na Web (21/10/2026)</h1>
+    <table>
+      <tr><th>Presente</th><th>Estudante</th><th>Curso</th><th>Horas</th></tr>
+      <tr><td><span class="check">✓</span></td><td>Ana Souza</td><td>Ciência da Computação</td><td>3h</td></tr>
+      <tr><td><span class="check">✓</span></td><td>Bruno Lima</td><td>Design</td><td>3h</td></tr>
+      <tr><td><span class="check"></span></td><td>Carla Mendes</td><td>Sistemas de Informação</td><td>0h</td></tr>
+      <tr><td><span class="check">✓</span></td><td>Diego Rocha</td><td>Ciência da Computação</td><td>2h</td></tr>
+      <tr><td><span class="check">✓</span></td><td>Eduarda Martins</td><td>Engenharia de Computação</td><td>3h</td></tr>
+    </table>
+    <div class="resumo"><div><b>18</b>inscritos</div><div><b>15</b>presentes</div><div><b>14</b>aptos a certificado (≥ 75%)</div></div>
+    <span class="btn">Confirmar presenças</span>
+  </main>
+</section>
+
+<!-- Tela 4 -->
+<section class="tela" id="t4">
+  <header><b>SGEU — Eventos Univali</b><span>Participante: Matheus · Eventos · Sair</span></header>
+  <main>
+    <h1>Meus certificados</h1>
+    <table>
+      <tr><th>Evento</th><th>Data</th><th>Carga horária</th><th>Código de verificação</th><th></th></tr>
+      <tr><td>Palestra: Mercado de TI em Santa Catarina</td><td>02/09/2026</td><td>2h</td><td>SGEU-7F3K-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
+      <tr><td>Minicurso: Python para análise de dados</td><td>18/09/2026</td><td>4h</td><td>SGEU-Q81M-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
+      <tr><td>Workshop: Design de interfaces</td><td>30/09/2026</td><td>3h</td><td>SGEU-L5D9-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
+    </table>
+    <div class="aviso">Certificados são emitidos pela coordenação após o evento, para quem teve pelo menos 75% de presença.</div>
+  </main>
+</section>
+
+</body>
+</html>
