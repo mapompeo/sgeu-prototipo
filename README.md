@@ -7,8 +7,9 @@ Grupo: José Gabriel Santos Gomes, Matheus Pompeo Dias e Nathan Gustavo Padilha 
 | Tela | Requisitos |
 |---|---|
 | 1. Eventos disponíveis | RF03 |
-| 2. Detalhe do evento e inscrição | RF04, RF05, RF06 |
+| 2. Detalhe do evento e inscrição | RF04, RF05 |
 | 3. Registro de presença | RF08, RF09 |
-| 4. Meus certificados | RF11 |
+| 4. Minhas inscrições e certificados | RF06, RF11 |
+| 5. Cadastro de participante externo | RF12 |
 
 Os nomes e eventos nas telas são fictícios.

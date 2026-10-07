@@ -41,7 +41,7 @@
 </head>
 <body>
 <nav class="nav">Protótipo SGEU (Engenharia de Software I, Univali):
-<a href="#t1">Tela 1: Eventos</a><a href="#t2">Tela 2: Inscrição</a><a href="#t3">Tela 3: Presença</a><a href="#t4">Tela 4: Certificados</a></nav>
+<a href="#t1">Tela 1: Eventos</a><a href="#t2">Tela 2: Inscrição</a><a href="#t3">Tela 3: Presença</a><a href="#t4">Tela 4: Inscrições e certificados</a><a href="#t5">Tela 5: Cadastro externo</a></nav>
 <script>if (!location.hash) location.hash = '#t1';</script>
 
 <!-- Tela 1 -->
@@ -76,9 +76,7 @@
         <div class="meta">Inscrições até 15/10/2026, 19h00</div>
         <span class="btn">Entrar na lista de espera</span>
         <div class="aviso">Você será avisado por e-mail se uma vaga for liberada. Hoje há 4 pessoas na lista.</div>
-        <hr>
-        <div class="meta">Se você já estiver inscrito, pode cancelar até 24h antes do início.</div>
-        <span class="btn alerta">Cancelar inscrição</span>
+
       </div>
     </div>
   </main>
@@ -106,14 +104,34 @@
 <section class="tela" id="t4">
   <header><b>SGEU — Eventos Univali</b><span>Participante: Matheus · Eventos · Sair</span></header>
   <main>
-    <h1>Meus certificados</h1>
+    <h1>Minhas inscrições e certificados</h1>
     <table>
-      <tr><th>Evento</th><th>Data</th><th>Carga horária</th><th>Código de verificação</th><th></th></tr>
+      <tr><th>Inscrição</th><th>Data</th><th>Situação</th><th></th></tr>
+      <tr><td>Carreira em Engenharia de Software</td><td>14/10/2026</td><td>Confirmada</td><td><span class="btn alerta" style="margin:0">Cancelar inscrição</span></td></tr>
+      <tr><td>Introdução ao Git e GitHub</td><td>16/10/2026</td><td>Lista de espera (2º)</td><td><span class="btn sec" style="margin:0">Sair da lista</span></td></tr>
+    </table>
+    <div class="meta" style="margin:6px 0 18px">Cancelamentos são permitidos até 24h antes do início do evento.</div>
+    <table>
+      <tr><th>Certificado</th><th>Data</th><th>Carga horária</th><th>Código de verificação</th><th></th></tr>
       <tr><td>Palestra: Mercado de TI em Santa Catarina</td><td>02/09/2026</td><td>2h</td><td>SGEU-7F3K-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
       <tr><td>Minicurso: Python para análise de dados</td><td>18/09/2026</td><td>4h</td><td>SGEU-Q81M-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
-      <tr><td>Workshop: Design de interfaces</td><td>30/09/2026</td><td>3h</td><td>SGEU-L5D9-2026</td><td><span class="btn sec" style="margin:0">Baixar PDF</span></td></tr>
     </table>
-    <div class="aviso">Certificados são emitidos pela coordenação após o evento, para quem teve pelo menos 75% de presença.</div>
+  </main>
+</section>
+
+<!-- Tela 5 -->
+<section class="tela" id="t5">
+  <header><b>SGEU — Eventos Univali</b><span>Visitante · Entrar</span></header>
+  <main>
+    <h1>Cadastro de participante da comunidade</h1>
+    <p class="meta">Para quem não tem vínculo com a Univali e quer participar dos eventos abertos à comunidade.</p>
+    <div class="card" style="max-width:520px">
+      <label for="nome"><b>Nome completo</b></label><br><input id="nome" style="width:100%;padding:8px;margin:4px 0 12px" value="Maria da Silva"><br>
+      <label for="email"><b>E-mail</b></label><br><input id="email" style="width:100%;padding:8px;margin:4px 0 12px" value="maria.silva@email.com"><br>
+      <label for="tel"><b>Telefone</b></label><br><input id="tel" style="width:100%;padding:8px;margin:4px 0 12px" value="(47) 99999-0000"><br>
+      <span class="btn">Criar cadastro</span>
+      <div class="aviso">Enviaremos um código de confirmação para o seu e-mail. Depois de confirmar, você pode se inscrever nos eventos abertos à comunidade.</div>
+    </div>
   </main>
 </section>
 
