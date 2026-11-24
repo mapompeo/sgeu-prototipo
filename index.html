@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SGEU — Protótipo (M3)</title>
+<style>
+:root{--azul:#0b4a8b;--fundo:#f3f4f8;--borda:#d5d9e3;--texto:#1a1d29;--suave:#555b6e}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fundo);color:var(--texto);font-size:14px}
+header{background:var(--azul);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
+header h1{font-size:18px;margin:0}
+header nav a{color:#fff;margin-left:12px;text-decoration:none}
+header nav a:hover,header nav a:focus{text-decoration:underline}
+main{padding:20px 24px;max-width:900px}
+h2{font-size:20px;margin:0 0 14px}
+.tela{display:none}.tela.ativa{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:14px}
+.tag{display:inline-block;background:#e3eefb;color:var(--azul);font-size:11px;border-radius:10px;padding:2px 8px;margin-right:4px}
+.card h3{margin:8px 0 4px;font-size:15px}
+.suave{color:var(--suave)}
+.esgotado{color:#a32020;font-weight:bold}
+.ok{color:#1c6b2e;font-weight:bold}
+button,.btn{font:inherit;font-weight:bold;border-radius:6px;padding:8px 14px;border:1px solid var(--azul);background:var(--azul);color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+button.sec,.btn.sec{background:#fff;color:var(--azul)}
+button.perigo{background:#fff;color:#a32020;border-color:#a32020}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
+.filtros{display:flex;gap:10px;margin-bottom:14px}
+.filtros label{flex:1;font-size:12px;color:var(--suave)}
+select,input[type=text],input[type=email],input[type=tel]{font:inherit;width:100%;padding:8px 10px;border:1px solid #888;border-radius:6px;background:#fff;display:block;margin-top:3px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--borda)}
+th{background:#e9ebf3;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:9px 10px;border-top:1px solid var(--borda)}
+.aviso{background:#fff7d6;border:1px solid #e3c14e;border-radius:6px;padding:9px 11px;margin-top:12px}
+.kpis{display:flex;gap:12px;margin:12px 0}
+.kpi{flex:1;background:#fff;border:1px solid var(--borda);border-radius:8px;text-align:center;padding:10px}
+.kpi b{display:block;font-size:22px}
+.lado{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}
+.estado{font-size:11px;color:var(--suave);margin:0 0 8px}
+form label{display:block;font-weight:bold;margin-top:12px}
+#guia{position:fixed;right:10px;bottom:10px;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:6px 8px;font-size:12px}
+#guia a{margin:0 3px}
+</style>
+</head>
+<body>
+
+<!-- Tela 1 — Eventos disponíveis (RF03) -->
+<section class="tela" id="t1"><header><h1>SGEU — Eventos Univali</h1><nav>Participante: Matheus · <a href="#t4">Minhas inscrições</a> · <a href="#t1">Sair</a></nav></header>
+<main><h2>Eventos disponíveis</h2>
+<div class="filtros">
+<label>Data<select><option>Próximos 30 dias</option></select></label>
+<label>Tipo<select><option>Todos</option><option>Palestra</option><option>Minicurso</option><option>Workshop</option><option>Semana acadêmica</option></select></label>
+<label>Público<select><option>Todos</option><option>Interno</option><option>Aberto à comunidade</option></select></label></div>
+<div class="grid">
+<article class="card"><span class="tag">Palestra</span><span class="tag">Aberto à comunidade</span><h3>Carreira em Engenharia de Software</h3><div class="suave">14/10/2026 · 19h00 · Auditório Bloco 6<br>Carga horária: 2h</div><p><b>32 vagas restantes</b></p><a class="btn" href="#t2a">Ver detalhes</a></article>
+<article class="card"><span class="tag">Minicurso</span><h3>Introdução ao Git e GitHub</h3><div class="suave">16/10/2026 · 19h00 · Laboratório 3<br>Carga horária: 4h</div><p class="esgotado">Vagas esgotadas</p><a class="btn sec" href="#t2b">Ver detalhes</a></article>
+<article class="card"><span class="tag">Workshop</span><span class="tag">Aberto à comunidade</span><h3>Acessibilidade na Web</h3><div class="suave">21/10/2026 · 19h00 · Sala 204<br>Carga horária: 3h</div><p><b>12 vagas restantes</b></p><a class="btn" href="#t2a">Ver detalhes</a></article>
+<article class="card"><span class="tag">Semana acadêmica</span><h3>SACC 2026: Semana da Computação</h3><div class="suave">27 a 29/10/2026 · 19h00 · Bloco 6<br>Carga horária: 12h</div><p><b>140 vagas restantes</b></p><a class="btn" href="#t2a">Ver detalhes</a></article>
+</div></main></section>
+
+<!-- Tela 2A — Detalhe com vagas e inscrição (RF04) -->
+<section class="tela" id="t2a"><header><h1>SGEU — Eventos Univali</h1><nav>Participante: Matheus · <a href="#t4">Minhas inscrições</a> · <a href="#t1">Sair</a></nav></header>
+<main><p class="suave"><a href="#t1">Eventos disponíveis</a> › Detalhe</p>
+<div class="lado"><article class="card"><span class="tag">Workshop</span><span class="tag">Aberto à comunidade</span><h2>Acessibilidade na Web</h2>
+<div class="suave">Data: 21/10/2026, 19h00 às 22h00<br>Local: Sala 204, Bloco 6<br>Carga horária: 3h<br>Organizador: Prof. responsável pelo workshop</div>
+<p>Workshop prático sobre WCAG 2.1: contraste, navegação por teclado e leitores de tela.</p></article>
+<aside class="card"><p class="estado">Estado: inscrição aberta</p><p class="ok">12 vagas restantes (18 de 30 ocupadas)</p><p class="suave">Inscrições até 20/10/2026, 19h00</p>
+<button id="insc">Inscrever-se</button>
+<div class="aviso" id="confirma" hidden role="status">Inscrição confirmada. Enviamos a confirmação para o seu e-mail. Restam 11 vagas.</div></aside></div></main></section>
+
+<!-- Tela 2B — Vagas esgotadas e lista de espera (RF05) -->
+<section class="tela" id="t2b"><header><h1>SGEU — Eventos Univali</h1><nav>Participante: Matheus · <a href="#t4">Minhas inscrições</a> · <a href="#t1">Sair</a></nav></header>
+<main><p class="suave"><a href="#t1">Eventos disponíveis</a> › Detalhe</p>
+<div class="lado"><article class="card"><span class="tag">Minicurso</span><h2>Introdução ao Git e GitHub</h2>
+<div class="suave">Data: 16/10/2026, 19h00 às 23h00<br>Local: Laboratório 3, Bloco 6<br>Carga horária: 4h<br>Organizador: Prof. responsável pelo minicurso</div>
+<p>Minicurso prático sobre versionamento: commits, branches, pull requests e trabalho em equipe.</p></article>
+<aside class="card"><p class="estado">Estado: vagas esgotadas</p><p class="esgotado">Vagas esgotadas (30 de 30)</p><p class="suave">Inscrições até 15/10/2026, 19h00</p>
+<button id="espera">Entrar na lista de espera</button>
+<div class="aviso">Quando uma vaga for liberada, você recebe um e-mail e tem <b>12 horas</b> para aceitar (ou até o encerramento das inscrições). Se não aceitar, a vaga passa ao próximo da lista. Hoje há 4 pessoas na lista.</div></aside></div></main></section>
+
+<!-- Tela 3 — Registro de presença (RF08, RF09) -->
+<section class="tela" id="t3"><header><h1>SGEU — Área do organizador</h1><nav>Organizador · Meus eventos · <a href="#t1">Sair</a></nav></header>
+<main><h2>Registro de presença: Acessibilidade na Web</h2>
+<label class="suave">Sessão <select style="display:inline;width:auto"><option>Sessão única — 21/10/2026 (hoje)</option></select></label>
+<p class="suave">Presença só pode ser registrada no dia da sessão. Correções: até 48h após o encerramento do evento.</p>
+<table><thead><tr><th>Presente</th><th>Participante</th><th>Vínculo</th><th>Horas</th></tr></thead><tbody>
+<tr><td><input type="checkbox" checked aria-label="Ana Souza presente"></td><td>Ana Souza</td><td>Estudante (Ciência da Computação)</td><td>3h</td></tr>
+<tr><td><input type="checkbox" checked aria-label="Bruno Lima presente"></td><td>Bruno Lima</td><td>Estudante (Design)</td><td>3h</td></tr>
+<tr><td><input type="checkbox" aria-label="Carla Mendes presente"></td><td>Carla Mendes</td><td>Comunidade externa (professora, rede básica)</td><td>0h</td></tr>
+<tr><td><input type="checkbox" checked aria-label="Diego Rocha presente"></td><td>Diego Rocha</td><td>Comunidade externa (escola pública)</td><td>2h</td></tr>
+<tr><td><input type="checkbox" checked aria-label="Eduarda Martins presente"></td><td>Eduarda Martins</td><td>Estudante (Engenharia de Computação)</td><td>3h</td></tr></tbody></table>
+<div class="kpis"><div class="kpi"><b>18</b>inscritos</div><div class="kpi"><b>15</b>presentes</div><div class="kpi"><b>14</b>aptos a certificado (≥ 75%)</div></div>
+<button>Confirmar presenças</button></main></section>
+
+<!-- Tela 4 — Minhas inscrições e certificados (RF06, RF11) -->
+<section class="tela" id="t4"><header><h1>SGEU — Eventos Univali</h1><nav>Participante: Matheus · <a href="#t1">Eventos</a> · <a href="#t1">Sair</a></nav></header>
+<main><h2>Minhas inscrições e certificados</h2>
+<table><thead><tr><th>Inscrição</th><th>Data</th><th>Situação</th><th></th></tr></thead><tbody>
+<tr><td>Carreira em Engenharia de Software</td><td>14/10/2026</td><td>Confirmada</td><td><button class="perigo">Cancelar inscrição</button></td></tr>
+<tr><td>Introdução ao Git e GitHub</td><td>16/10/2026</td><td>Lista de espera (2º)</td><td><button class="sec">Sair da lista</button></td></tr>
+<tr><td>Acessibilidade na Web</td><td>21/10/2026</td><td>Vaga oferecida: aceitar até 22/10, 08h00</td><td><button>Aceitar vaga</button></td></tr></tbody></table>
+<p class="suave">Cancelamentos são permitidos até 24h antes do início do evento.</p>
+<table><thead><tr><th>Certificado</th><th>Data</th><th>Carga horária</th><th>Código de verificação</th><th></th></tr></thead><tbody>
+<tr><td>Palestra: Mercado de TI em Santa Catarina</td><td>02/09/2026</td><td>2h</td><td>SGEU-7F3K-2026</td><td><button class="sec">Baixar PDF</button></td></tr>
+<tr><td>Minicurso: Python para análise de dados</td><td>18/09/2026</td><td>4h</td><td>SGEU-Q81M-2026</td><td><button class="sec">Baixar PDF</button></td></tr></tbody></table>
+<p><a href="#t7">Como verificar a autenticidade de um certificado</a></p></main></section>
+
+<!-- Tela 5 — Cadastro de participante externo (RF12) -->
+<section class="tela" id="t5"><header><h1>SGEU — Eventos Univali</h1><nav>Visitante · <a href="#t1">Entrar</a></nav></header>
+<main><h2>Cadastro de participante da comunidade</h2><p class="suave">Para quem não tem vínculo com a Univali e quer participar dos eventos abertos à comunidade.</p>
+<form class="card" style="max-width:520px" onsubmit="return false">
+<label for="n" style="margin-top:0">Nome completo</label><input id="n" type="text" value="Maria da Silva">
+<label for="e">E-mail</label><input id="e" type="email" value="maria.silva@email.com">
+<label for="f">Telefone</label><input id="f" type="tel" value="(47) 99999-0000">
+<p><button>Criar cadastro</button></p>
+<div class="aviso">Enviaremos um código de confirmação para o seu e-mail. Depois de confirmar, você pode se inscrever nos eventos abertos à comunidade.</div></form></main></section>
+
+<!-- Tela 6 — Emissão de certificados pela coordenação (RF10) -->
+<section class="tela" id="t6"><header><h1>SGEU — Área da coordenação</h1><nav>Coordenação de eventos · Eventos · <a href="#t1">Sair</a></nav></header>
+<main><h2>Emitir certificados: Acessibilidade na Web</h2>
+<p class="suave">Evento encerrado em 21/10/2026 · Presença registrada pelo organizador · Presença mínima: 75% da carga horária (3h)</p>
+<table><thead><tr><th>Participante</th><th>Vínculo</th><th>Presença</th><th>Situação</th></tr></thead><tbody>
+<tr><td>Ana Souza</td><td>Estudante</td><td>100% (3h)</td><td class="ok">Apta</td></tr>
+<tr><td>Bruno Lima</td><td>Estudante</td><td>100% (3h)</td><td class="ok">Apto</td></tr>
+<tr><td>Diego Rocha</td><td>Comunidade externa</td><td>67% (2h)</td><td class="esgotado">Abaixo do mínimo</td></tr>
+<tr><td>Eduarda Martins</td><td>Estudante</td><td>100% (3h)</td><td class="ok">Apta</td></tr></tbody></table>
+<div class="kpis"><div class="kpi"><b>15</b>presentes</div><div class="kpi"><b>14</b>aptos a certificado</div><div class="kpi"><b>0</b>emitidos</div></div>
+<button>Emitir 14 certificados</button> <button class="sec">Devolver ao organizador para correção</button>
+<p class="suave">Devolução permitida até 48h após o encerramento do evento (restam 31h).</p></main></section>
+
+<!-- Tela 7 — Verificação pública de certificado (RF14) -->
+<section class="tela" id="t7"><header><h1>SGEU — Verificação de certificado</h1><nav>Visitante · <a href="#t1">Eventos</a></nav></header>
+<main><h2>Verificar autenticidade de um certificado</h2><p class="suave">Qualquer pessoa pode conferir um certificado informando o código impresso nele. Não é preciso entrar no sistema.</p>
+<form class="card" style="max-width:520px" onsubmit="return false"><label for="c" style="margin-top:0">Código de verificação</label><input id="c" type="text" value="SGEU-7F3K-2026"><p><button id="ver">Verificar</button></p>
+<div class="aviso" id="res" role="status"><b class="ok">Certificado válido.</b><br>Participante: Matheus P. D. · Evento: Palestra: Mercado de TI em Santa Catarina<br>Data: 02/09/2026 · Carga horária: 2h · Emitido pela coordenação de eventos da Univali.</div></form></main></section>
+
+<!-- Tela 8 — Cadastrar, editar e cancelar evento (RF01, RF07, RF13) -->
+<section class="tela" id="t8"><header><h1>SGEU — Área do organizador</h1><nav>Organizador · Meus eventos · <a href="#t1">Sair</a></nav></header>
+<main><h2>Editar evento: Acessibilidade na Web</h2>
+<p class="estado">Situação: aprovado e divulgado · 18 inscritos · 4 na lista de espera</p>
+<form class="card" onsubmit="return false"><div class="grid">
+<div><label for="ti" style="margin-top:0">Título</label><input id="ti" type="text" value="Acessibilidade na Web"></div>
+<div><label for="tp" style="margin-top:0">Tipo</label><select id="tp"><option>Workshop</option><option>Palestra</option><option>Minicurso</option><option>Semana acadêmica</option></select></div>
+<div><label for="dt">Data e horário</label><input id="dt" type="text" value="21/10/2026, 19h00 às 22h00"></div>
+<div><label for="lc">Local</label><input id="lc" type="text" value="Sala 204, Bloco 6"></div>
+<div><label for="ch">Carga horária (h) e vagas</label><input id="ch" type="text" value="3h · 30 vagas (não pode ficar abaixo de 18)"></div>
+<div><label for="pb">Público</label><select id="pb"><option>Aberto à comunidade</option><option>Somente interno</option></select></div></div>
+<div class="aviso">Alterar data, horário ou local avisa por e-mail os 18 inscritos e a lista de espera.</div>
+<p><button>Salvar alterações</button> <button class="perigo">Cancelar evento…</button></p>
+<p class="suave">Cancelar evento exige informar o motivo; inscritos e lista de espera são avisados e as vagas deixam de existir. Para criar um evento novo, use “Novo evento” em Meus eventos: o evento só é divulgado depois de aprovado pela coordenação.</p></form></main></section>
+
+<!-- Tela 9 — Analisar evento (RF02) -->
+<section class="tela" id="t9"><header><h1>SGEU — Área da coordenação</h1><nav>Coordenação de eventos · Eventos · <a href="#t1">Sair</a></nav></header>
+<main><h2>Eventos aguardando análise</h2>
+<table><thead><tr><th>Evento</th><th>Organizador</th><th>Data</th><th>Público</th><th>Decisão</th></tr></thead><tbody>
+<tr><td>Oficina de Python para iniciantes</td><td>Prof. responsável</td><td>05/11/2026</td><td>Aberto à comunidade</td><td><button>Aprovar</button> <button class="perigo">Rejeitar</button></td></tr>
+<tr><td>Palestra: Carreiras em dados</td><td>Prof. responsável</td><td>12/11/2026</td><td>Somente interno</td><td><button>Aprovar</button> <button class="perigo">Rejeitar</button></td></tr></tbody></table>
+<form class="card" style="max-width:520px;margin-top:14px" onsubmit="return false"><label for="mt" style="margin-top:0">Motivo da rejeição (obrigatório ao rejeitar)</label><input id="mt" type="text" value="Local indisponível na data; propor nova data">
+<p class="suave">Aprovado: o evento é divulgado. Rejeitado: o organizador recebe o motivo e pode corrigir e reenviar.</p></form></main></section>
+
+<nav id="guia" aria-label="Telas do protótipo">Telas:
+<a href="#t1">1</a><a href="#t2a">2A</a><a href="#t2b">2B</a><a href="#t3">3</a><a href="#t4">4</a><a href="#t5">5</a><a href="#t6">6</a><a href="#t7">7</a><a href="#t8">8</a><a href="#t9">9</a></nav>
+
+<script>
+function mostra(){var id=(location.hash||'#t1').slice(1);document.querySelectorAll('.tela').forEach(function(s){s.classList.toggle('ativa',s.id===id)});if(!document.getElementById(id))document.getElementById('t1').classList.add('ativa');document.getElementById('guia').hidden=new URLSearchParams(location.search).has('sem-guia')}
+addEventListener('hashchange',mostra);mostra();
+document.getElementById('insc').onclick=function(){document.getElementById('confirma').hidden=false;this.disabled=true};
+document.getElementById('espera').onclick=function(){this.textContent='Você está na lista (5º)';this.disabled=true};
+</script>
+</body></html>
